@@ -1,9 +1,9 @@
 import random
-import hangman_art
-import hangman_words
+from hangman_art import game_stages, logo
+from hangman_words import word_list
 
-print(hangman_art.logo)
-chosen_word = random.choice(hangman_words.word_list)
+print(logo)
+chosen_word = random.choice(word_list)
 
 #make a list with blanks from the randomly selected letter
 display = []
@@ -42,10 +42,10 @@ while game_state == True:
         guesses.append(guess)
         if lives == 0:
             game_state = False
-            print(hangman_art.game_stages[0])
-            print("You lose.")
+            print(game_stages[0])
+            print(f"The word was, '{chosen_word}'. You lose.")
         else:
-            print(hangman_art.game_stages[lives])
+            print(game_stages[lives])
             print(f"{' '.join(display)}")
             print(f"You guessed '{guess}'. That is not part of the chosen word")
     elif "_" not in display:
@@ -53,6 +53,6 @@ while game_state == True:
         print(f"{' '.join(display)}")
         print("You've won!")
     else:
-        print(hangman_art.game_stages[lives])
+        print(game_stages[lives])
         print(f"{' '.join(display)}")
         guesses.append(guess)
